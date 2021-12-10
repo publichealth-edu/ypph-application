@@ -71,7 +71,7 @@ class MyForm(FlaskForm):
     phone = StringField(label="What is your phone number (Please add your country\n's dialing code)", validators=[DataRequired()])
     citizen = StringField(label='What is your country of birth?', validators=[DataRequired()])
     residence = StringField(label='What is your country of residence?', validators=[DataRequired()])
-    category = SelectField('What membership category are you applying for?', choices=["", "Graduate Member", "Associate Member", "Member", "Fellow", "Institution Member"], validators=[DataRequired()])
+    category = SelectField('What membership category are you applying for?', choices=["", "Virtual Internship Program (VIP)", "Health Literacy and Leadership Programme (HLLP)", "DEAL Fellowship"], validators=[DataRequired()])
     support = FileField(label='Please upload supporting statement here', validators=[DataRequired()])
     resume = FileField(label='Please upload your resume here', validators=[DataRequired()])
     cert = FileField(label='Please upload your certificate here', validators=[DataRequired()])
