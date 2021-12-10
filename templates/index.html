@@ -1,0 +1,18 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container" style="padding: 2;">
+      <h1 class="display-4">Welcome to the Academy of Public Health Membership application portal!</h1>
+      <p class="lead">Before you go on, please ensure that you have read and understood the information on the how to apply page. If you haven't please, go through it again, here.</p>
+      <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href=" {{ url_for ('login') }} " role="button">Apply!</a>
+    </div>
+  </div>
+  
+{% endblock %}
