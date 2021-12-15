@@ -158,7 +158,7 @@ def login():
         resume = form.resume.data
         
 
-        newfile = Uploads(applicant_name=f"{fname} {mname} {lname}", applicant_email=email, applicant_phone=phone, applicant_citizen=citizen, applicant_residency=residence, applicant_category=category, statement_name=support.filename, statement_data=support.read(), resume_name=resume.filename, resume_data=resume.read())
+        newfile = Uploads(applicant_name=f"{fname} {mname} {lname}", applicant_email=email, applicant_phone=phone, applicant_citizen=citizen, applicant_residency=residence, applicant_category=category, statement_name=support.filename, statement_data=support.read(), resume_name=resume.filename, resume_data=resume.read(), picture_name=resume.filename, picture_data=resume.read())
         db.session.add(newfile)
         db.session.commit()
         
