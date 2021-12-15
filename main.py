@@ -51,10 +51,8 @@ class Uploads(db.Model):
     statement_data = db.Column(db.LargeBinary)
     resume_name = db.Column(db.String(300), unique=False, nullable=False)
     resume_data = db.Column(db.LargeBinary)
-    certificate_name = db.Column(db.String(300), unique=False, nullable=False)
-    certificate_data = db.Column(db.LargeBinary)
-    reference_name = db.Column(db.String(300), unique=False, nullable=False)
-    reference_data = db.Column(db.LargeBinary)
+    picture_name = db.Column(db.String(300), unique=False, nullable=False)
+    picture_data = db.Column(db.LargeBinary)
     
     
 
@@ -71,11 +69,10 @@ class MyForm(FlaskForm):
     phone = StringField(label="What is your phone number (Please add your country\n's dialing code)", validators=[DataRequired()])
     citizen = StringField(label='What is your country of birth?', validators=[DataRequired()])
     residence = StringField(label='What is your country of residence?', validators=[DataRequired()])
-    category = SelectField('What membership category are you applying for?', choices=["", "Virtual Internship Program (VIP)", "Health Literacy and Leadership Programme (HLLP)", "DEAL Fellowship"], validators=[DataRequired()])
+    category = SelectField('What YPPH programme are you applying for?', choices=["", "Virtual Internship Program (VIP)", "Health Literacy and Leadership Programme (HLLP)", "The Design, Equity, Action and Leadership Fellowship (DEAL)"], validators=[DataRequired()])
     support = FileField(label='Please upload supporting statement here', validators=[DataRequired()])
-    resume = FileField(label='Please upload your resume here', validators=[DataRequired()])
-    cert = FileField(label='Please upload your certificate here', validators=[DataRequired()])
-    reference = FileField(label='Please upload your reference here', validators=[DataRequired()])
+    resume = FileField(label='Please upload your résumé here', validators=[DataRequired()])
+    picture = FileField(label='Please upload your passport photograph here', validators=[DataRequired()])
     submit = SubmitField(label='Submit')
 
 class RegisterForm(FlaskForm):
@@ -124,13 +121,8 @@ def downloadr(id):
 @login_required
 def downloadc(id):
     item = Uploads.query.get(id)
-    return send_file(BytesIO(item.certificate_data), mimetype='application/pdf', as_attachment=True, attachment_filename=item.certificate_name)
+    return send_file(BytesIO(item.picture_data), mimetype='image/jpeg', as_attachment=True, attachment_filename=item.picture_name)
 
-@app.route('/downloadrr/<id>', methods=["GET"])
-@login_required
-def downloadrr(id):
-    item = Uploads.query.get(id)
-    return send_file(BytesIO(item.reference_data), mimetype='application/pdf', as_attachment=True, attachment_filename=item.reference_name)
 
 @app.route('/files', methods=["GET"])
 @login_required
@@ -164,10 +156,9 @@ def login():
         category = form.category.data
         support = form.support.data
         resume = form.resume.data
-        cert = form.cert.data
-        reference = form.reference.data
+        
 
-        newfile = Uploads(applicant_name=f"{fname} {mname} {lname}", applicant_email=email, applicant_phone=phone, applicant_citizen=citizen, applicant_residency=residence, applicant_category=category, statement_name=support.filename, statement_data=support.read(), resume_name=resume.filename, resume_data=resume.read(), certificate_name=cert.filename, certificate_data=cert.read(), reference_name=reference.filename, reference_data=reference.read())
+        newfile = Uploads(applicant_name=f"{fname} {mname} {lname}", applicant_email=email, applicant_phone=phone, applicant_citizen=citizen, applicant_residency=residence, applicant_category=category, statement_name=support.filename, statement_data=support.read(), resume_name=resume.filename, resume_data=resume.read())
         db.session.add(newfile)
         db.session.commit()
         
