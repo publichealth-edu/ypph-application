@@ -176,29 +176,29 @@ def login():
         return render_template('success.html')
     return render_template('login.html', form=form)
 
-# @app.route('/register', methods=["GET", "POST"])
-# def register():
-#     form = RegisterForm()
-#     if form.validate_on_submit():
+@app.route('/register', methods=["GET", "POST"])
+def register():
+    form = RegisterForm()
+    if form.validate_on_submit():
     
-#         hash_and_salted_password = generate_password_hash(
-#             form.password.data,
-#             method='pbkdf2:sha256',
-#             salt_length=8
-#         )
-#         new_user = User(
-#             username=form.username.data,
-#             password=hash_and_salted_password,
-#         )
-#         db.session.add(new_user)
-#         db.session.commit()
+        hash_and_salted_password = generate_password_hash(
+            form.password.data,
+            method='pbkdf2:sha256',
+            salt_length=8
+        )
+        new_user = User(
+            username=form.username.data,
+            password=hash_and_salted_password,
+        )
+        db.session.add(new_user)
+        db.session.commit()
         
-#         #Log in and authenticate user after adding details to database.
-#         login_user(new_user)
+        #Log in and authenticate user after adding details to database.
+        login_user(new_user)
         
-#         return redirect(url_for("files"))
+        return redirect(url_for("files"))
 
-#     return render_template("register.html", form=form)
+    return render_template("register.html", form=form)
 
 
 @app.route('/signin', methods=["GET", "POST"])
