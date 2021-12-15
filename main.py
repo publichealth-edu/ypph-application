@@ -169,7 +169,7 @@ def login():
             connection.sendmail(
                 from_addr=FROM_EMAIL,
                 to_addrs=TO_EMAIL,
-                msg=f"Subject: New APH Membership Application\n\nFirst name: {fname}\n\nMiddle name: {mname}\n\nLast name: {lname}\n\nEmail: {email}\n\nPhone: {phone}\n\nCountry of Citizenship: {citizen}\n\nCountry of Residence: {residence}\n\nCategory being applied for: {category}"
+                msg=f"Subject: New YPPH Membership Application\n\nFirst name: {fname}\n\nMiddle name: {mname}\n\nLast name: {lname}\n\nEmail: {email}\n\nPhone: {phone}\n\nCountry of Citizenship: {citizen}\n\nCountry of Residence: {residence}\n\nCategory being applied for: {category}"
                     )
         
         
