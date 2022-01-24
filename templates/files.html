@@ -15,6 +15,7 @@ Home
       <h1 class="display-4">Welcome to the YPPH application portal!</h1>
       <br><br>
       {% for item in items %}
+        {% if item.id < 50 %}
         <ul>
            <p> {{ item.id }} | Name: {{ item.applicant_name }} | Email: {{ item.applicant_email }} | Phone: {{ item.applicant_phone }} | Country of Citizenship: {{ item.applicant_citizen }} | Country of Residence: {{ item.applicant_residency }} | Category Applied for: {{ item.applicant_category }} </p> <br>
                 <li>{{ item.statement_name.rsplit('.', 1)[0] }} | <a href="{{ url_for ( 'downloads', id=item.id )}}">Download</a></li> <br>
@@ -25,6 +26,7 @@ Home
         </ul>
 
         <br><br>
+        {% endif %}
       {% endfor %}
 
     </div>
