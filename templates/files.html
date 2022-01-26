@@ -21,18 +21,7 @@ Home
         
         <button style="padding:2em;"> <a href="{{ url_for('deal') }}" style="padding:2em ">DEAL</a> </button>
         
-      {% for item in items %}
-        <ul>
-           <p> {{ item.id }} | Name: {{ item.applicant_name }} | Email: {{ item.applicant_email }} | Phone: {{ item.applicant_phone }} | Country of Citizenship: {{ item.applicant_citizen }} | Country of Residence: {{ item.applicant_residency }} | Category Applied for: {{ item.applicant_category }} </p> <br>
-                <li>{{ item.statement_name.rsplit('.', 1)[0] }} | <a href="{{ url_for ( 'downloads', id=item.id )}}">Download</a></li> <br>
-                <li>{{ item.resume_name.rsplit('.', 1)[0] }} | <a href="{{ url_for ( 'downloadr', id=item.id )}}">Download</a></li> <br>
-                <li>{{ item.picture_name.rsplit('.', 1)[0] }} | <a href="{{ url_for ( 'downloadc', id=item.id )}}">Download</a></li> <br>
-            </li>
-            <p><a href="{{ url_for ( 'delete', id=item.id )}}">Delete application?</a> Warning: There is no confirmation and the action cannot be undone.</p>
-        </ul>
-
-        <br><br>
-      {% endfor %}
+     
 
     </div>
   </div>
