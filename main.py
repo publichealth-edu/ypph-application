@@ -130,6 +130,24 @@ def files():
     items = Uploads().query.all()
     return render_template('files.html', items=items, logged_in=current_user.is_authenticated)
 
+@app.route('/vip', methods=["GET"])
+@login_required
+def vip():
+    items = Uploads().query.all()
+    return render_template('vip.html', items=items, logged_in=current_user.is_authenticated)
+
+@app.route('/hllp', methods=["GET"])
+@login_required
+def hllp():
+    items = Uploads().query.all()
+    return render_template('hllp.html', items=items, logged_in=current_user.is_authenticated)
+
+@app.route('/deal', methods=["GET"])
+@login_required
+def deal():
+    items = Uploads().query.all()
+    return render_template('deal.html', items=items, logged_in=current_user.is_authenticated)
+
 @app.route("/delete/<int:id>")
 @login_required
 def delete(id):
