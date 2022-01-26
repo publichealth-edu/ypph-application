@@ -156,44 +156,44 @@ def delete(id):
     db.session.commit()
     return render_template (url_for('files'))
 
-@app.route('/success')
-def success():
+@app.route('/apply')
+def login():
     return render_template('success.html')
 
-@app.route('/apply', methods=['GET', 'POST'])
-def login():
-    form = MyForm()
-    if form.validate_on_submit():
-        fname = form.fname.data
-        mname = form.mname.data
-        lname = form.lname.data
-        email = form.email.data
-        phone = form.phone.data
-        citizen = form.citizen.data
-        residence = form.residence.data
-        category = form.category.data
-        support = form.support.data
-        resume = form.resume.data
-        picture = form.picture.data
+# @app.route('/apply', methods=['GET', 'POST'])
+# def login():
+#     form = MyForm()
+#     if form.validate_on_submit():
+#         fname = form.fname.data
+#         mname = form.mname.data
+#         lname = form.lname.data
+#         email = form.email.data
+#         phone = form.phone.data
+#         citizen = form.citizen.data
+#         residence = form.residence.data
+#         category = form.category.data
+#         support = form.support.data
+#         resume = form.resume.data
+#         picture = form.picture.data
         
 
-        newfile = Uploads(applicant_name=f"{fname} {mname} {lname}", applicant_email=email, applicant_phone=phone, applicant_citizen=citizen, applicant_residency=residence, applicant_category=category, statement_name=support.filename, statement_data=support.read(), resume_name=resume.filename, resume_data=resume.read(), picture_name=picture.filename, picture_data=picture.read())
-        db.session.add(newfile)
-        db.session.commit()
+#         newfile = Uploads(applicant_name=f"{fname} {mname} {lname}", applicant_email=email, applicant_phone=phone, applicant_citizen=citizen, applicant_residency=residence, applicant_category=category, statement_name=support.filename, statement_data=support.read(), resume_name=resume.filename, resume_data=resume.read(), picture_name=picture.filename, picture_data=picture.read())
+#         db.session.add(newfile)
+#         db.session.commit()
         
         
-        with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
-            connection.starttls()
-            connection.login(user=FROM_EMAIL, password=PASSWORD)
-            connection.sendmail(
-                from_addr=FROM_EMAIL,
-                to_addrs=TO_EMAIL,
-                msg=f"Subject: New YPPH Application\n\nFirst name: {fname}\n\nMiddle name: {mname}\n\nLast name: {lname}\n\nEmail: {email}\n\nPhone: {phone}\n\nCountry of Citizenship: {citizen}\n\nCountry of Residence: {residence}\n\nCategory being applied for: {category}"
-                    )
+#         with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
+#             connection.starttls()
+#             connection.login(user=FROM_EMAIL, password=PASSWORD)
+#             connection.sendmail(
+#                 from_addr=FROM_EMAIL,
+#                 to_addrs=TO_EMAIL,
+#                 msg=f"Subject: New YPPH Application\n\nFirst name: {fname}\n\nMiddle name: {mname}\n\nLast name: {lname}\n\nEmail: {email}\n\nPhone: {phone}\n\nCountry of Citizenship: {citizen}\n\nCountry of Residence: {residence}\n\nCategory being applied for: {category}"
+#                     )
         
         
-        return render_template('success.html')
-    return render_template('login.html', form=form)
+#         return render_template('success.html')
+#     return render_template('login.html', form=form)
 
 # @app.route('/register', methods=["GET", "POST"])
 # def register():
