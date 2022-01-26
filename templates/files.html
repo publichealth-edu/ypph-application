@@ -14,6 +14,13 @@ Home
     <div class="container" style="padding: 2em">
       <h1 class="display-4">Welcome to the YPPH application portal!</h1>
       <br><br>
+        
+        <button style="padding:2em;"> <a href="{{ url_for('vip') }}" style="padding:2em ">VIP</a> </button>
+        
+        <button style="padding:2em;"> <a href="{{ url_for('hllp') }}" style="padding:2em ">HLLP</a> </button>
+        
+        <button style="padding:2em;"> <a href="{{ url_for('deal') }}" style="padding:2em ">DEAL</a> </button>
+        
       {% for item in items %}
         <ul>
            <p> {{ item.id }} | Name: {{ item.applicant_name }} | Email: {{ item.applicant_email }} | Phone: {{ item.applicant_phone }} | Country of Citizenship: {{ item.applicant_citizen }} | Country of Residence: {{ item.applicant_residency }} | Category Applied for: {{ item.applicant_category }} </p> <br>
