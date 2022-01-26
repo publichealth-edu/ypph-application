@@ -106,19 +106,19 @@ def home():
     return render_template('index.html')
 
 @app.route('/download/<id>', methods=["GET"])
-@login_required
+# @login_required
 def downloads(id):
     item = Uploads.query.get(id)
     return send_file(BytesIO(item.statement_data), mimetype='application/pdf', as_attachment=True, attachment_filename=item.statement_name)
 
 @app.route('/downloadr/<id>', methods=["GET"])
-@login_required
+# @login_required
 def downloadr(id):
     item = Uploads.query.get(id)
     return send_file(BytesIO(item.resume_data), mimetype='application/pdf', as_attachment=True, attachment_filename=item.resume_name)
 
 @app.route('/downloadc/<id>', methods=["GET"])
-@login_required
+# @login_required
 def downloadc(id):
     item = Uploads.query.get(id)
     return send_file(BytesIO(item.picture_data), mimetype='image/jpeg', as_attachment=True, attachment_filename=item.picture_name)
